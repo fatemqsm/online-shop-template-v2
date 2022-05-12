@@ -8,8 +8,7 @@ const Contact = () => {
   return (
     <div
       className={css`
-        margin-top: 0;
-        font-size: 3.052rem;
+        font-size: 0.9rem;
       `}
     >
       <Navigation />

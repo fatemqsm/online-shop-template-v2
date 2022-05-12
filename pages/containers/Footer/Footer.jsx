@@ -10,7 +10,7 @@ const Footer = () => {
         color: #0c1c6c;
         font-family: font5;
         font-size: 35px;
-        width: 300px;
+        max-width: 280px;
         margin: 0 auto;
         text-align: center;
         transition: all 400ms;

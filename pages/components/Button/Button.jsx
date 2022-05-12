@@ -3,6 +3,8 @@ import { css, cx } from '@emotion/css'
 import { jsx, ThemeProvider, useTheme } from '@emotion/react'
 
 const Button = ({
+  width = '',
+  type = 'submite',
   children,
   onClick = () => {},
   color = 'black',
@@ -11,7 +13,7 @@ const Button = ({
   bottom = '0',
   left = '0',
   margin = '0',
-  fontSize = '20px',
+  fontSize = '1.2em',
   padding = '10px 37px',
   backgroundColor = 'white',
   backgroundColorHover = '#0c1c6c',
@@ -19,8 +21,10 @@ const Button = ({
   const theme = useTheme()
   return (
     <button
+      type={type}
       onClick={onClick}
       className={css`
+        width: ${width};
         font-family: font5;
         padding: ${padding};
         font-size: ${fontSize};

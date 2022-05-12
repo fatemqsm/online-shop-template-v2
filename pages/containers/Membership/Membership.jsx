@@ -5,7 +5,11 @@ import H2 from '../../components/Typography/H2'
 import H5 from '../../components/Typography/H5'
 import Space from '../../components/Space/Space'
 import Button from '../../components/Button/Button'
+import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
+
 const Membership = () => {
+  const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
   return (
     <div
       className={css`
@@ -38,9 +42,13 @@ const Membership = () => {
           align-self: center;
           flex-direction: row;
           justify-content: center;
+          ${mq[1]} {
+            flex-direction: column;
+            gap: 20px 0;
+          }
         `}
       >
-        <InputText />
+        <InputText width="300px" />
         <Button
           backgroundColor="#0c1c6c"
           backgroundColorHover="#fbede7"

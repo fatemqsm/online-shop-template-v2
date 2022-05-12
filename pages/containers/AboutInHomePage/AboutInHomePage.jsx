@@ -1,13 +1,20 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
 import { Button, Space, H5, H2 } from '../../components'
+import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 
 const AboutInHomePage = () => {
+  const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
   return (
     <div
       className={css`
         width: 55%;
         margin-left: 100px;
+        ${mq[1]} {
+          width: 80%;
+          margin-left: 40px;
+        }
       `}
     >
       <Space />

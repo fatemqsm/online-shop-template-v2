@@ -10,7 +10,7 @@ const H1 = ({
   return (
     <h1
       className={css`
-        font-size: 3.052rem;
+        font-size: 3.052em;
         font-family: ${fontFamily};
         letter-spacing: ${letterSpacing};
         color: ${color};

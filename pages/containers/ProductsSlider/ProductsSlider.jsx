@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { GET_ALL_PRODUCTS_ACTION } from '../../../actions'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { css, cx } from '@emotion/css'
+import fetchUrl from '../../../utils/fetchUrl'
 import Products from './Products'
-import PRODUCTS from './PRODUCTS.json'
 import QuickViewIcon from './QuickViewIcon'
 import { Button, Space, H2 } from './../../components'
+// import PRODUCTS from './PRODUCTS.json'
 
-const ProductsSlider = () => {
+const ProductsSlider = ({ allProducts, loading }) => {
   const [numberOfSlidesToShow, setNumberOfSlidesToShow] = useState(4)
   const [displayWidth, setDisplayWidth] = useState(4)
 
@@ -43,17 +46,20 @@ const ProductsSlider = () => {
       `}
     >
       <Space />
-      <Space />
       <H2 letterSpacing="1px" fontFamily="font4" color="#0c1c6c">
         Most Popular
       </H2>
       <Space />
       <Space />
-      <Slider {...settings}>
-        {PRODUCTS.map((item) => (
-          <Products data={item} key={`product-${item.Id}`} />
-        ))}
-      </Slider>
+      {allProducts ? (
+        <Slider {...settings}>
+          {allProducts.map((item) => (
+            <Products data={item} key={`product-${item.Id}`} />
+          ))}
+        </Slider>
+      ) : (
+        <div>PRODUCTS</div>
+      )}
       <Space />
       <Space />
       <Button>View all products →</Button>

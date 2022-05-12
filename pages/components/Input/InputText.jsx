@@ -2,12 +2,17 @@ import React from 'react'
 import { css, cx } from '@emotion/css'
 
 const InputText = ({
+  onChange = () => {},
   type = 'text',
   placeholder = 'Enter your e-mail',
-  width = '360px',
+  width = '100%',
+  id = '',
+  margin = '0 10px',
 }) => {
   return (
     <input
+      onChange={onChange}
+      id={id}
       type={type}
       placeholder={placeholder}
       className={css`
@@ -15,19 +20,21 @@ const InputText = ({
         padding:15px 20px;
         width:${width}; 
         direction: ${type == 'text' ? `rtl` : 'ltr'}
-        font-size: 25px;
         color: black;
-        border:0.8px solid #777;
+        border:0.6px solid #e9e7e7;
         transition: all 400ms;
         &:focus {
           outline:  solid 1px #777;
+          &::placeholder {
+            color: white;
+          }
         }
         &::placeholder {
           color: #777;
-          font-size: 1.3em;
+          font-size: 1.4em;
           font-family: font4;
         }
-        margin:0 20px;
+        margin:${margin};
       `}
     />
   )

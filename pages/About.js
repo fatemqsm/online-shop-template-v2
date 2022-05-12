@@ -10,15 +10,14 @@ const About = () => {
     <div
       className={css`
         margin-top: 0;
-        font-size: 3.052rem;
+        font-size: 0.9rem;
+
       `}
     >
       <Navigation />
       <AboutInHomePage />
       <PictureOfAboutInHomePage />
-      <div className={css`
-        margin-top: 400px;
-      `}><Footer /></div>
+      <Footer />
 
 
     </div >

@@ -5,7 +5,7 @@ const H3 = ({ children, fontFamily = 'font3' }) => {
   return (
     <h3
       className={css`
-        font-size: 1.953rem;
+        font-size: 1.953em;
         font-family: ${fontFamily};
       `}
     >

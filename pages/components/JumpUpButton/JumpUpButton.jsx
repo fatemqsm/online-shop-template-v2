@@ -25,7 +25,7 @@ const JumpUpButton = ({
       onClick={onClick}
       className={css`
         font-family: font5;
-        font-size: 32px;
+        font-size: 35px;
         color: #777;
         font-weight: 400;
         background-color: #fbede7;
@@ -34,7 +34,6 @@ const JumpUpButton = ({
         width: 70px;
         height: 70px;
         &:hover {
-          // padding-bottom: 35;
           padding-bottom: 60;
           color: #ffffff;
           background-color: rgba(25, 25, 25, 0.75);

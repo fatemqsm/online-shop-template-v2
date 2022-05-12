@@ -1,10 +1,15 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
+
 import { Button, H5 } from './../../components'
+import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
+
 const PictureOfAboutInHomePage = () => {
+  const mq = BREACKPOINT.map((bp) => `@media (min-width: ${bp}px)`)
+
   return (
     <section
-      className={css`
+      styles={css`
         width: 100%;
         float: right;
       `}
@@ -13,13 +18,19 @@ const PictureOfAboutInHomePage = () => {
         className={css`
           whith: 100%;
           margin-bottom: 100px;
+          color: green;
+          ${mq[1]} {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+          }
         `}
       >
-        <div className="col-6 col-s-12" style={{ position: 'relative' }}>
+        <div style={{ position: 'relative' }}>
           <img
             className={css`
               max-width: 100%;
-              max-height: 400px;
+              max-height: 100vh;
             `}
             src="./images/About2.jpg"
           />
@@ -28,8 +39,8 @@ const PictureOfAboutInHomePage = () => {
               position: absolute;
               top: 15%;
               padding: 0 20px;
-              width: 50%;
-              height: 65%;
+              width: 65%;
+              height: 70%;
               background-color: rgba(25, 25, 25, 0.35);
               border-radius: 4px;
               display: flex;
@@ -38,6 +49,10 @@ const PictureOfAboutInHomePage = () => {
               align-content: center;
               align-self: center;
               margin-left: 10px;
+              ${mq[2]} {
+                width: 50%;
+                height: 65%;
+              }
             `}
           >
             <H5 lineHeight="1.5" fontFamily="font6" color="white">
@@ -55,7 +70,7 @@ const PictureOfAboutInHomePage = () => {
           <img
             className={css`
               max-width: 100%;
-              max-height: 400px;
+              max-height: 100vh;
             `}
             src="./images/About1.jpg"
           />
@@ -64,8 +79,8 @@ const PictureOfAboutInHomePage = () => {
               position: absolute;
               top: 15%;
               padding: 0 20px;
-              width: 50%;
-              height: 65%;
+              width: 65%;
+              height: 70%;
               background-color: rgba(25, 25, 25, 0.35);
               border-radius: 4px;
               display: flex;
@@ -74,6 +89,10 @@ const PictureOfAboutInHomePage = () => {
               align-content: center;
               align-self: center;
               margin-left: 10px;
+              ${mq[2]} {
+                width: 50%;
+                height: 65%;
+              }
             `}
           >
             <H5 lineHeight="1.5" fontFamily="font6" color="white">
