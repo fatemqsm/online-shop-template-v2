@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { css, cx } from '@emotion/css'
 import { jsx, ThemeProvider, useTheme } from '@emotion/react'
 
-const JumpUpButton = ({
-  onClick = () => {},
-  position = 'fixed',
-  showInStorybook = 'false',
-}) => {
+const JumpUpButton = ({ position = 'fixed', showInStorybook = 'false' }) => {
   const [scrollYForJumpUp, setScrollYForJumpUp] = useState(0)
-
+  const handleJumpButton = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
   useEffect(() => {
     const handleScroll = () => {
       setScrollYForJumpUp(window.scrollY)
@@ -22,7 +23,7 @@ const JumpUpButton = ({
 
   return (
     <button
-      onClick={onClick}
+      onClick={() => handleJumpButton()}
       className={css`
         font-family: font5;
         font-size: 35px;

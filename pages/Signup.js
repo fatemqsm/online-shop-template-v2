@@ -11,9 +11,10 @@ import Link from 'next/link'
 const Signup = (props) => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
   const auth = useSelector((state) => state.auth)
+  const allUsersInStates = useSelector((state) => state.allUsers)
   const router = useRouter()
   const [formValue, setFormValue] = useState({})
-  const [repetitiveUser, setRepetitiveUser] = useState(false)
+  const [repetitiveUser, setRepetitiveUser] = useState(undefined)
   const dispatch = useDispatch()
   const handleOnChange = (name, value) => {
     setFormValue({
@@ -25,19 +26,22 @@ const Signup = (props) => {
   const handleCreateAccountButton = (event) => {
     if (event) event.preventDefault()
 
-    const allUsers = auth.user
+    const allUsers = allUsersInStates.user
     const user = formValue.email
     const currentUser = []
     currentUser = allUsers?.filter(item => item.email === user)
-    console.log('current user false', currentUser)
-    currentUser > 0 ? setRepetitiveUser(false) : setRepetitiveUser(true)
-    repetitiveUser === true && dispatch(REGISTER_ACTION(formValue))
+    console.log('current user ', currentUser)
+    console.log('current user1 ', repetitiveUser)
+    currentUser.length > 0 ? setRepetitiveUser(true) : setRepetitiveUser(false)
+
     // postData({ url: 'https://62711f28e1c7aec428fc31ae.mockapi.io/users', data: formValue })
   }
   useEffect(() => {
-
     auth.register === true && router.push('/Login')
   }, [auth.register])
+  useEffect(() => {
+    repetitiveUser === false && dispatch(REGISTER_ACTION(formValue))
+  }, [repetitiveUser])
   useEffect(() => {
     dispatch(GET_ALL_USERS_INFORMATION_ACTION())
   }, [])
@@ -147,6 +151,9 @@ const Signup = (props) => {
             backgroundColorHover="#fbede7"
             color="white"
             colorHover="#0c1c6c"
+            src='./loading-white.svg'
+            loading={auth.loading}
+
           >
             CREATE
           </Button>

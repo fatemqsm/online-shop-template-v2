@@ -32,14 +32,14 @@ const AboutInHomePage2 = () => {
         <Space />
         <Space />
         <H2 letterSpacing="1px" fontFamily="font4" color="#0c1c6c">
-          It is made in Japan
+          It is made in Iran
         </H2>
         <Space />
 
         <H5 lineHeight="1.5" fontFamily="font5" color="rgba(25, 25, 25, 0.75)">
-          WOKIEE Shopify Theme is more than usual theme. It is a powerful design
-          tool. WOKIEE is outstanding Premium Shopify theme. It will be perfect
-          solution for your current or future webshop.
+          ONLINE SHOP Theme is more than usual theme. It is a powerful design
+          tool. ONLINE SHOP is outstanding Premium Shopify theme. It will be
+          perfect solution for your current or future webshop.
         </H5>
         <Space />
         <Button>Read more about us →</Button>

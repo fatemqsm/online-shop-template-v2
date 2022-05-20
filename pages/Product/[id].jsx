@@ -1,44 +1,24 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react'
-import CartContext from '../../contexts/CartContext'
 import { css, cx } from '@emotion/css'
 import { useRouter } from 'next/router'
-import { useLocation } from 'react-router-dom'
 import PRODUCTS from '../containers/ProductsSlider/PRODUCTS.json'
 import Navigation from '../containers/Navigation/Navigation'
 import { Button, H2, H3, H5, Small, Space } from '../components'
 import BREACKPOINT from './../components/styles/BREACKPOINT.json'
 import { useDispatch, useSelector } from 'react-redux'
-import { ADD_TO_CART } from '../../actions'
-import ProductItemReducer from './ProductItem.reducer'
+import AddToCartButton from './AddToCartButton'
+import Gallary from '../containers/ProductsSlider/Gallary'
 const SingleProduct = (props) => {
-  const auth2 = useSelector((state) => state)
-  const { dispatchCart } = useContext(CartContext)
-  const [state, dispatch] = useReducer(ProductItemReducer, { added: false })
+  const dispatch = useDispatch()
+  const cart = useSelector((state) => state.cart)
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
-  const { carts } = useContext(CartContext)
   let router = useRouter()
-  // const [added, setAdded] = useState()
   const [product, setProduct] = useState({})
-  const added = carts.includes(product.Id)
   useEffect(() => {
     let pathName = router.asPath
     let productId = pathName.slice(9, 45)
     setProduct(PRODUCTS.find((item) => item.Id === productId))
   }, [])
-
-  const handleAddToCart = () => {
-    if (added === true) {
-      dispatchCart({
-        type: 'REMOVE_FROM_CART',
-        id: product.Id,
-      })
-    } else {
-      dispatchCart({
-        type: 'ADD_TO_CART',
-        id: product.Id,
-      })
-    }
-  }
 
   return (
     <div>
@@ -185,16 +165,7 @@ const SingleProduct = (props) => {
               margin-top: 70px;
             `}
           >
-            <Button
-              onClick={() => handleAddToCart()}
-              width="100%"
-              backgroundColor="#fbede7"
-              backgroundColorHover="#0c1c6c"
-              color="#0c1c6c"
-              colorHover="white"
-            >
-              {added ? 'Delete from cart' : 'Add to cart'}
-            </Button>
+            <AddToCartButton productId={product.Id} />
           </div>
         </div>
       </div>
@@ -223,6 +194,7 @@ const SingleProduct = (props) => {
         </H5>
       </div>
       <Space />
+      {/* <Gallary productPicture={`../${product.Picture}`} /> */}
     </div>
   )
 }

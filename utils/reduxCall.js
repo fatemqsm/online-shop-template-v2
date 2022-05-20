@@ -1,4 +1,3 @@
-import { actions } from "@storybook/addon-actions";
 import actionTypes from "../configs/actionTypes";
 import fetchUrl from "./fetchUrl";
 

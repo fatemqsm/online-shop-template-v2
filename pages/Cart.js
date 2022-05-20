@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, useCallback, useReducer } from 'react'
 import { useRouter } from 'next/router'
 import ProductItemReducer from './../pages/Product/ProductItem.reducer'
+import { GET_ALL_PRODUCTS_ACTION } from '../actions'
 
 import { css, cx } from '@emotion/css'
 import BREACKPOINT from './components/Styles/BREACKPOINT.json'
@@ -11,24 +12,32 @@ import { Space, Small, Button } from './components'
 import Navigation from './containers/Navigation/Navigation'
 const Cart = () => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
-  const { dispatchCart } = useContext(CartContext)
-  let router = useRouter()
-  const { carts } = useContext(CartContext)
-  console.log('carts in cart', carts)
-  const [PRODUCTS, setPRODUCTS] = useState([])
   const [loginMessage, setLoginMessage] = useState(false)
-  const auth = useSelector((state) => state)
+  const allStore = useSelector((state) => state)
+  let router = useRouter()
+  const carts = []
+  allStore.cart.carts ? carts = allStore.cart.carts : []
+  // console.log('carts in cart', carts)
+  const [PRODUCTS, setPRODUCTS] = useState([])
+  const dispatch = useDispatch()
+
   const totalPrice = 0
   const fetchingProductUrl = async () => {
-    try {
-      const response = await fetch(
-        'https://62711f28e1c7aec428fc31ae.mockapi.io/allproducts'
-      )
-      const resault = await response.json()
-      setPRODUCTS(resault)
-    } catch (e) {
-      console.log('error in fetchingProductUrl ', e)
-    }
+    // allStore.allProducts === [] ? setPRODUCTS(allStore.allProducts.allProducts) : dispatch(GET_ALL_PRODUCTS_ACTION()) && setPRODUCTS(allStore.allProducts.allProducts)
+
+    await dispatch(GET_ALL_PRODUCTS_ACTION())
+    setPRODUCTS(allStore.allProducts.allProducts)
+
+    // console.log('PRODUCTS', allStore.allProducts.allProducts)
+    // try {
+    //   const response = await fetch(
+    //     'https://62711f28e1c7aec428fc31ae.mockapi.io/allproducts'
+    //   )
+    //   const resault = await response.json()
+    //   setPRODUCTS(resault)
+    // } catch (e) {
+    //   console.log('error in fetchingProductUrl ', e)
+    // }
   }
   useEffect(() => {
     fetchingProductUrl()
@@ -36,17 +45,18 @@ const Cart = () => {
 
 
   const calculatePrice = () => {
+
     const price = 0
-    PRODUCTS.map((item) => (
+    PRODUCTS ? PRODUCTS.map((item) => (
       price = item.Price,
       carts.includes(item.Id) && (totalPrice = totalPrice + JSON.parse(price.slice(1, price.lenght)))
-    ))
+    )) : setPRODUCTS(allStore.allProducts.allProducts)
   }
   calculatePrice()
-  console.log('auth', auth)
+  // console.log('auth', allStore)
 
   const handelProceedToCheckout = () => {
-    (auth.auth.logged === true && (auth.auth.user)) ? (router.push('/PaymentPage')) : setLoginMessage(true)
+    (allStore.auth.logged === true && (allStore.auth.user)) ? (router.push('/PaymentPage')) : setLoginMessage(true)
   }
   return (
     <>

@@ -14,7 +14,7 @@ const Login = (props) => {
   const [formValue, setFormValue] = useState({})
   const [logged, setLogged] = useState(false)
   const auth = useSelector((state) => state.auth)
-  const auth2 = useSelector((state) => state)
+  const allUsersInStates = useSelector((state) => state.allUsers)
   const router = useRouter()
   const handleOnChange = (name, value) => {
 
@@ -27,19 +27,18 @@ const Login = (props) => {
 
   const handleSubmitButton = async () => {
     dispatch(GET_ALL_USERS_INFORMATION_ACTION())
-
   }
 
   useEffect(() => {
     if (auth.loading === false && auth.user && auth.user.length > 0) {
       setLogged(false)
-      const allUsers = auth.user
+      const allUsers = allUsersInStates.user
       const user = formValue.email
       const currentUser = {}
-      currentUser = allUsers.find(item => item.email === user)
+      currentUser = allUsers?.find(item => item.email === user)
       currentUser && currentUser.password === formValue.password && setLogged(true)
     }
-  }, [auth.loading])
+  }, [allUsersInStates.loading])
 
   useEffect(() => {
     if (logged === true && auth.loading === false) {
@@ -122,7 +121,6 @@ const Login = (props) => {
           width:100%; 
           border : solid 1px #e9e7e7; 
           padding:10px; 
-          line-height: 4.5rem;
           ${mq[1]} {
             order:1; 
           }
@@ -158,6 +156,8 @@ const Login = (props) => {
             backgroundColorHover="#fbede7"
             color="white"
             colorHover="#0c1c6c"
+            loading={auth.loading}
+            src='./loading-white.svg'
           >
             LOGIN
           </Button>

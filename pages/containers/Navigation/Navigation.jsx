@@ -1,5 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { css } from '@emotion/css'
+import React, { useEffect, useState, useContext, useRef } from 'react'
+// import { jsx, css, keyframes } from '@emotion/react'
+import { css, keyframes } from '@emotion/css'
+import { jsx } from '@emotion/react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import CartContext from '../../../contexts/CartContext'
 import { Logo, Small } from '../../components'
@@ -10,23 +13,42 @@ import {
   HiOutlineSearch,
   HiOutlineShoppingBag,
 } from 'react-icons/hi'
+import { GET_ALL_USERS_INFORMATION_ACTION } from '../../../actions'
 import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 import DropDownMenu from './DropDownMenu'
 
+const navBarAnimation = keyframes`
+  from{
+    margin-left:-300px; 
+  }
+
+  to {
+    margin-left:0; 
+  }
+`
+
+// function useOutsideAlerter(ref) {}
 const Navigation = ({ marginBottom = '0' }) => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+  // const wrapperRef = useRef(null)
+
+  const dispatch = useDispatch()
   const theme = useTheme()
   const [scrollY, setScrollY] = useState(0)
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [isOpenAccount, setIsOpenAccount] = useState(false)
   const [isOpenCart, setIsOpenCart] = useState(false)
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const auth = useSelector((state) => state.auth)
-  console.log('auth in navigation', auth)
+  const allStore = useSelector((state) => state)
+  // console.log('allStore in navigation', allStore)
+
   const optionForDropDownListAccount = JSON.stringify([
     { Link: '/', Name: auth.user },
     { Link: '', Name: 'Log out' },
   ])
-  const { carts } = useContext(CartContext)
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
@@ -54,7 +76,26 @@ const Navigation = ({ marginBottom = '0' }) => {
     setIsOpenAccount(false)
     setNavbarOpen(false)
   }
+  // useEffect(
+  //   (wrapperRef) => {
+  //     /**
+  //      * Alert if clicked on outside of element
+  //      */
+  //     function handleClickOutside(event) {
+  //       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+  //         setIsOpenAccount(false)
+  //       }
+  //     }
 
+  //     // Bind the event listener
+  //     document.addEventListener('mousedown', handleClickOutside)
+  //     return () => {
+  //       // Unbind the event listener on clean up
+  //       document.removeEventListener('mousedown', handleClickOutside)
+  //     }
+  //   },
+  //   [wrapperRef]
+  // )
   return (
     <>
       <div
@@ -75,7 +116,7 @@ const Navigation = ({ marginBottom = '0' }) => {
         className={css`
           position: fixed;
           width: 100%;
-          z-index: 100;
+          z-index: 250;
           margin-bottom: ${marginBottom};
           ${mq[1]} {
             display: inline-block;
@@ -153,8 +194,10 @@ const Navigation = ({ marginBottom = '0' }) => {
                 position: relative;
                 flex-direction: column;
                 background-color: ${theme.colors.white};
-                width: 80%;
+                width: 65%;
                 height: 100vh;
+                animation: ${navBarAnimation} 0.4s ease;
+                padding: 10px;
               }
             `}
           >
@@ -189,8 +232,7 @@ const Navigation = ({ marginBottom = '0' }) => {
                   <div
                     className={css`
                     cursor: pointer;
-
-                  margin-top:-1px; 
+justify-content:center; 
                   }
                 `}
                   >
@@ -198,13 +240,11 @@ const Navigation = ({ marginBottom = '0' }) => {
                   </div>
                 </Link>
               </li>
-
               <li>
                 <Link href="/Shop">
                   <div
                     className={css`
                       cursor: pointer;
-
                       color: ${theme.colors.darkBlue};
                     `}
                   >
@@ -237,6 +277,18 @@ const Navigation = ({ marginBottom = '0' }) => {
                   </div>
                 </Link>
               </li>
+              <li>
+                <Link href="/Blog">
+                  <div
+                    className={css`
+                      color: ${theme.colors.darkBlue};
+                      cursor: pointer;
+                    `}
+                  >
+                    Blog
+                  </div>
+                </Link>
+              </li>
             </ul>
           </div>
           <div
@@ -257,7 +309,7 @@ const Navigation = ({ marginBottom = '0' }) => {
                 font-size: 25px;
                 font-weight: bolder;
                 padding: 0 20px;
-                margin-top: 25px;
+                margin-top: 35px;
                 ${mq[1]} {
                   margin-top: -3px;
                 }
@@ -289,31 +341,40 @@ const Navigation = ({ marginBottom = '0' }) => {
                       margin-right: 5px;
                     }
                   `}
+                  css={{
+                    color: 'darkorchid',
+                    '& .name': {
+                      color: 'orange',
+                      display: 'none',
+                    },
+                  }}
                 >
-                  <tooltip title="Cart">
-                    <div onClick={() => togglingCart()}>
+                  <div onClick={() => togglingCart()}>
+                    <p title="Cart">
                       <HiOutlineShoppingBag />
-                      <div
-                        className={css`
-                          position: relative;
-                          width: 25px;
-                          height: 25px;
-                          top: -35px;
-                          right: -20px;
-                          text-align: center;
-                          color: white;
-                          background-color: ${theme.colors.darkBlue};
-                          border-radius: 50%;
-                          ${mq[0]} {
-                            top: -30px;
-                            right: -15px;
-                          }
-                        `}
-                      >
-                        <Small>{carts.length}</Small>
-                      </div>
+                    </p>
+
+                    <div
+                      className={css`
+                        position: relative;
+                        top: -49px;
+                        right: -20px;
+                        text-align: center;
+                        color: white;
+                        background-color: ${theme.colors.darkBlue};
+                        border-radius: 50%;
+                        padding: 0 2px;
+                        ${mq[0]} {
+                          right: -15px;
+                          padding: 0 8px;
+                        }
+                      `}
+                    >
+                      <Small>
+                        {allStore.cart.carts ? allStore.cart.carts.length : 0}
+                      </Small>
                     </div>
-                  </tooltip>
+                  </div>
                 </div>
               </li>
               <li
@@ -321,11 +382,11 @@ const Navigation = ({ marginBottom = '0' }) => {
                   cursor: pointer;
                 `}
               >
-                <tooltip title="My Account">
-                  <div onClick={() => togglingAccount()}>
+                <div onClick={() => togglingAccount()}>
+                  <p title="My Account">
                     <HiOutlineUser />
-                  </div>
-                </tooltip>
+                  </p>
+                </div>
               </li>
             </ul>
           </div>
@@ -337,7 +398,7 @@ const Navigation = ({ marginBottom = '0' }) => {
           className={css`
             display: block;
             position: fixed;
-            top: 3.5rem;
+            top: 4rem;
             right: 20px;
             z-index: 250;
             ${mq[1]} {
@@ -348,7 +409,10 @@ const Navigation = ({ marginBottom = '0' }) => {
           {auth.logged === true ? (
             <DropDownMenu options={optionForDropDownListAccount} />
           ) : (
-            <DropDownMenu options='[{"Link":"/Login","Name":"Log in"},{"Link":"/Signup","Name":"Sign up"}]' />
+            <DropDownMenu
+              options='[{"Link":"/Login","Name":"Log in"},{"Link":"/Signup","Name":"Sign up"}]'
+              // ref={wrapperRef}
+            />
           )}
         </div>
       )}
@@ -357,7 +421,7 @@ const Navigation = ({ marginBottom = '0' }) => {
           className={css`
             display: block;
             position: fixed;
-            top: 3.5rem;
+            top: 4rem;
             right: 65px;
             z-index: 250;
             ${mq[1]} {
@@ -368,6 +432,8 @@ const Navigation = ({ marginBottom = '0' }) => {
           <DropDownMenu options='[{"Link":"/Cart","Name":"View cart"}]' />
         </div>
       )}
+
+      {/* <div className="name">hi</div> */}
     </>
   )
 }

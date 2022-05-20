@@ -2,23 +2,28 @@ import actionTypes from "../configs/actionTypes"
 
 const product = (state = [], action) => {
   switch (action.type) {
-    case actionTypes.ADD_TO_CART_STARTED:
+    case actionTypes.ADD_TO_CART:
       return {
         ...state,
-        loading: action.loading,
-      }
-    case actionTypes.ADD_TO_CART_SUCCESS:
-      return {
-        ...state,
-        loading: action.loading,
-        productId: action.productId,
         ...action,
+        carts: [
+          ...state.carts,
+          action.id
+        ]
       }
-    case actionTypes.ADD_TO_CART_FAILED:
+    case actionTypes.REMOVE_FROM_CART:
+      let newCarts = state.carts
+      newCarts = newCarts.filter((cartId) => { return cartId != action.id })
       return {
         ...state,
-        ...action
+        ...action,
+        carts: newCarts,
       }
+    // case actionTypes.ADD_TO_CART_FAILED:
+    //   return {
+    //     ...state,
+    //     ...action
+    //   }
     // case actionTypes.REMOVE_FROM_CART:
     //   return {
     //     ...state,

@@ -9,7 +9,7 @@ import fetchUrl from '../../../utils/fetchUrl'
 import Products from './Products'
 import QuickViewIcon from './QuickViewIcon'
 import { Button, Space, H2 } from './../../components'
-// import PRODUCTS from './PRODUCTS.json'
+import Link from 'next/link'
 
 const ProductsSlider = ({ allProducts, loading }) => {
   const [numberOfSlidesToShow, setNumberOfSlidesToShow] = useState(4)
@@ -58,12 +58,19 @@ const ProductsSlider = ({ allProducts, loading }) => {
           ))}
         </Slider>
       ) : (
-        <div>PRODUCTS</div>
+        <img
+          className={css`
+            width: 100px;
+          `}
+          src="./loading.svg"
+          alt=""
+        />
       )}
       <Space />
       <Space />
-      <Button>View all products →</Button>
-
+      <Link href="/Shop">
+        <Button>View all products →</Button>
+      </Link>
       <Space />
       <Space />
     </div>

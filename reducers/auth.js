@@ -3,34 +3,40 @@ import Cookies from 'universal-cookie';
 
 const auth = (state = [], action) => {
   const cookies = new Cookies();
-  console.log('action', action)
+  // console.log('action', action)
   switch (action.type) {
 
 
-    case actionTypes.VALIDATE_ME_STARTED:
+    // case actionTypes.VALIDATE_ME_STARTED:
+    //   return {
+    //     ...state,
+    //     loading: action.loading,
+    //     logged: action.logged,
+    //   }
+    // case actionTypes.VALIDATE_ME_SUCCESS:
+    //   if (action.user && action.user.user) {
+    //     user = {
+    //       email: action.user.user.email,
+    //     }
+    //   }
+    //   return {
+    //     ...state,
+    //     logged: action.logged,
+    //     loading: action.loading,
+    //     user: user[0],
+    //   }
+    // case actionTypes.VALIDATE_ME_FAILED:
+    //   return {
+    //     ...state,
+    //     ...action,
+    //   }
+    case actionTypes.VALIDATE_ME:
       return {
         ...state,
-        loading: action.loading,
-        logged: action.logged,
+        type: action.type,
+        user: state.user,
+        logged: state.logged,
       }
-    case actionTypes.VALIDATE_ME_SUCCESS:
-      if (action.user && action.user.user) {
-        user = {
-          email: action.user.email,
-        }
-      }
-      return {
-        ...state,
-        logged: action.logged,
-        loading: action.loading,
-        user: user[0],
-      }
-    case actionTypes.VALIDATE_ME_FAILED:
-      return {
-        ...state,
-        ...action,
-      }
-
 
 
     case actionTypes.GET_ALL_USERS_INFORMATION_STARTED:
@@ -55,13 +61,14 @@ const auth = (state = [], action) => {
       return {
         ...state,
         loading: action.loading,
-        register: false
+        register: false,
       }
     case actionTypes.REGISTER_SUCCESS:
       return {
         ...state,
         loading: action.loading,
         register: true,
+        ...action,
       }
     case actionTypes.REGISTER_FAILED:
       return {
@@ -71,6 +78,8 @@ const auth = (state = [], action) => {
 
 
     case actionTypes.LOGOUT:
+      cookies.remove('user')
+      cookies.remove('logged')
       return {
         ...state,
         type: action.type,
@@ -80,6 +89,7 @@ const auth = (state = [], action) => {
 
     case actionTypes.LOGIN:
       if (action.user) { cookies.set('user', JSON.stringify(action.user), { path: '/' }); }
+      if (action.logged) { cookies.set('logged', JSON.stringify(true), { path: '/' }); }
 
       return {
         ...state,

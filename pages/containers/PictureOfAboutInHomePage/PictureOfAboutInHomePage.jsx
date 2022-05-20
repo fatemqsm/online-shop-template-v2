@@ -19,6 +19,9 @@ const PictureOfAboutInHomePage = () => {
           whith: 100%;
           margin-bottom: 100px;
           color: green;
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-gap: 20px;
           ${mq[1]} {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -66,11 +69,10 @@ const PictureOfAboutInHomePage = () => {
             </Button>
           </div>
         </div>
-        <div className="col-6 col-s-12" style={{ position: 'relative' }}>
+        <div style={{ position: 'relative' }}>
           <img
             className={css`
-              max-width: 100%;
-              max-height: 100vh;
+              width: 100%;
             `}
             src="./images/About1.jpg"
           />

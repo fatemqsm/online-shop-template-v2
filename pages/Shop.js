@@ -1,17 +1,87 @@
-import React from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { GET_ALL_PRODUCTS_ACTION } from '../actions'
+import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import { css } from '@emotion/css'
 import PictureOfAboutInHomePage from './containers/PictureOfAboutInHomePage/PictureOfAboutInHomePage'
 import Navigation from './containers/Navigation/Navigation'
+import Products from './containers/ProductsSlider/Products'
+import { Small, H2 } from './components'
 const Shop = () => {
+  const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
+  const [productss, setProducts] = useState([])
+  const dispatch = useDispatch()
+
+  const allProducts = useSelector((state) => state.allProducts)
+  // console.log("allProducts in shop ", productss)
+  const loadAllProducts = () => {
+    dispatch(GET_ALL_PRODUCTS_ACTION())
+  }
+  useEffect(() => {
+    loadAllProducts()
+  }, [])
+  useEffect(() => {
+    setProducts(allProducts.allProducts)
+  }, [allProducts])
+
+
   return (
     <>
       <div className={css`
           position: absolute;
           top: 0;
+         
         `}><Navigation /></div>
+      <div
+        className={css`
+          background-color: #f7f8fa;
+          margin: 100px 60px;
+          padding: 10px 20px;
+          ${mq[1]} {
+            margin: 100px 20px;
+          }
+        `}
+      >
+        <Small lineHeight="1.5" fontFamily="font2" color="#777">
+          Home / Shop
+        </Small>
+
+      </div>
       <div className={css`
-          margin-top:70px; 
-        `}> <PictureOfAboutInHomePage /></div>
+          margin:-50px 0 -50px 60px; 
+          ${mq[1]} {
+            margin-left:20px; 
+          } 
+        `}>
+        <H2 letterSpacing="1px" fontFamily="font4" color="#0c1c6c">
+          Shop
+        </H2>
+      </div>
+
+      <div className={css`
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+          justify-content: space-around;
+          grid-gap:70px 10px; 
+          margin:100px 0; 
+          text-align:center; 
+          ${mq[2]} {
+            grid-template-columns:auto auto auto;
+            margin-top:100px;
+          }
+          ${mq[1]} {
+            grid-template-columns: auto auto;
+            margin-top:100px;
+          }
+          ${mq[0]} {
+            grid-template-columns: auto;
+            margin-top:100px;
+          }
+        `}>
+
+        {(productss) ? productss.map((item) => <Products data={item} key={`product-${item.Id}`} />) : 'loading'}
+      </div>
     </>
   )
 }

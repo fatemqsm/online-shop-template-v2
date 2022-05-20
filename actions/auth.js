@@ -1,26 +1,21 @@
 import actionTypes from "../configs/actionTypes";
 import reduxCall from "../utils/reduxCall";
 
+// const VALIDATE_ME_ACTION = () => {
+//   return async (dispatch) => {
+//     return reduxCall(dispatch, {
+//       url: 'https://62711f28e1c7aec428fc31ae.mockapi.io/token',
+//       method: 'GET',
+//       name: 'VALIDATE_ME',
+//     })
+//   }
+// }
+
 const VALIDATE_ME_ACTION = () => {
-  return async (dispatch) => {
-    return reduxCall(dispatch, {
-      url: 'https://62711f28e1c7aec428fc31ae.mockapi.io/token',
-      method: 'GET',
-      name: 'VALIDATE_ME',
-    })
+  return {
+    type: actionTypes.VALIDATE_ME,
   }
 }
-const GET_ALL_USERS_INFORMATION_ACTION = () => {
-
-  return (dispatch) => {
-    return reduxCall(dispatch, {
-      name: 'GET_ALL_USERS_INFORMATION',
-      url: 'https://62711f28e1c7aec428fc31ae.mockapi.io/users',
-      method: 'GET'
-    })
-  }
-}
-
 
 const LOGIN_ACTION = (formValue) => {
   return {
@@ -45,4 +40,4 @@ const LOGOUT_ACTION = () => {
   }
 }
 
-export { VALIDATE_ME_ACTION, REGISTER_ACTION, LOGOUT_ACTION, LOGIN_ACTION, GET_ALL_USERS_INFORMATION_ACTION }
+export { VALIDATE_ME_ACTION, REGISTER_ACTION, LOGOUT_ACTION, LOGIN_ACTION }

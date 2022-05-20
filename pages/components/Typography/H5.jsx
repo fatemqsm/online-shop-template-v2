@@ -5,7 +5,7 @@ const H5 = ({
   children,
   color,
   fontFamily = 'font3',
-  lineHeight = '1px',
+  lineHeight = '1.5rem',
   fontSize = '1.25em',
 }) => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)

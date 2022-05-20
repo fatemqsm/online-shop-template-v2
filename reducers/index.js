@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux'
 import auth from './auth'
-import product from './product'
+import cart from './cart'
 import allProducts from './allProducts'
-
+import allUsers from './allUsers'
 
 export default combineReducers({
   auth,
-  product,
+  cart,
   allProducts,
+  allUsers,
 })

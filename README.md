@@ -1,3 +1,7 @@
+ONLINE SHOP Theme is more than usual theme. It is a powerful design
+tool. ONLINE SHOP is outstanding Premium Shopify theme. It will be
+perfect solution for your current or future webshop.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
