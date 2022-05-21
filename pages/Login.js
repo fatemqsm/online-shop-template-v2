@@ -11,12 +11,14 @@ import Space from './components/Space/Space'
 import InputText from './components/Input/InputText'
 import Button from './components/Button/Button'
 
-import BREACKPOINT from './components/Styles/BREACKPOINT.json'
+// import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 const Login = (props) => {
 
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
   const dispatch = useDispatch()
   const [formValue, setFormValue] = useState({})
   const [logged, setLogged] = useState(false)

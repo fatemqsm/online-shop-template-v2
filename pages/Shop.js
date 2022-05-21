@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GET_ALL_PRODUCTS_ACTION } from '../actions'
-import BREACKPOINT from './components/Styles/BREACKPOINT.json'
+// import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import { css } from '@emotion/css'
 import PictureOfAboutInHomePage from './containers/PictureOfAboutInHomePage/PictureOfAboutInHomePage'
 import Navigation from './containers/Navigation/Navigation'
@@ -12,6 +12,7 @@ import H2 from './components/Typography/H2'
 import Image from 'next/image'
 
 const Shop = () => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   const [productss, setProducts] = useState([])

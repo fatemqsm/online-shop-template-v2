@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
 import { css, cx } from '@emotion/css'
-import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
 // import { Space, Small } from '../../components'
 import Small from '../../components/Typography/Small'
 
 import Image from 'next/image'
 
 const ProductInCart = ({ data }) => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
   return (
     <>
       <ul

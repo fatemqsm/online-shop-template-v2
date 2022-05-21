@@ -8,7 +8,7 @@ import Space from '../../components/Space/Space'
 import H2 from '../../components/Typography/H2'
 
 import Footer from './../Footer/Footer'
-import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
 import client from '../../../utils/ClientGraphQL'
 // import loading from '../../../public/loadign.svg'
 import {
@@ -29,7 +29,9 @@ const POSTS_QUERY = gql`
   }
 `
 const BlogMainPage = () => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
   const { loading, error, data } = useQuery(POSTS_QUERY)
   console.log('debuging', data)
   const [posts, setPosts] = useState([])

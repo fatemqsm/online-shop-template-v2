@@ -5,9 +5,10 @@ import H2 from '../../components/Typography/H2'
 import H5 from '../../components/Typography/H5'
 import Space from '../../components/Space/Space'
 import Button from '../../components/Button/Button'
-import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 
 const Membership = () => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   return (

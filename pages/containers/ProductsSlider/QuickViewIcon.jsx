@@ -9,10 +9,11 @@ import Small from '../../components/Typography/Small'
 
 import Link from 'next/link'
 import AddToCartButton from '../../Product/AddToCartButton'
-import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
 import Image from 'next/image'
 
 const QuickViewIcon = ({ product }) => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   const [show, setShow] = useState(false)

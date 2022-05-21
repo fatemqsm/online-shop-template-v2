@@ -1,8 +1,9 @@
 import React from 'react'
 import { Global, css, cx } from '@emotion/react'
-import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
 
 const Reset = () => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   return (

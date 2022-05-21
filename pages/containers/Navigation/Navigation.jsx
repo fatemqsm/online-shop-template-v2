@@ -17,7 +17,7 @@ import {
   HiOutlineShoppingBag,
 } from 'react-icons/hi'
 import { GET_ALL_USERS_INFORMATION_ACTION } from '../../../actions'
-import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 import DropDownMenu from './DropDownMenu'
 
 const navBarAnimation = keyframes`
@@ -32,7 +32,9 @@ const navBarAnimation = keyframes`
 
 // function useOutsideAlerter(ref) {}
 const Navigation = ({ marginBottom = '0' }) => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
   // const wrapperRef = useRef(null)
 
   const dispatch = useDispatch()

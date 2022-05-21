@@ -5,9 +5,10 @@ import Space from '../../components/Space/Space'
 import H5 from '../../components/Typography/H5'
 import Small from '../../components/Typography/Small'
 
-import BREACKPOINT from '../../components/Styles/BREACKPOINT.json'
+// import BREACKPOINT from '../../components/Styles/BREACKPOINT.json'
 
 const BlogModal = ({ data }) => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   return (

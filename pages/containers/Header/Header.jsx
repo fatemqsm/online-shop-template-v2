@@ -8,7 +8,7 @@ import Button from '../../components/Button/Button'
 
 import Link from 'next/link'
 import Navigation from '../Navigation/Navigation'
-import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 import Image from 'next/image'
 const HeaderTextAnimation = keyframes`
 0%{
@@ -25,6 +25,7 @@ const HeaderTextAnimation = keyframes`
   }
 `
 const Header = () => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   return (

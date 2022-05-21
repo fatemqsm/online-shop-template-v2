@@ -6,10 +6,11 @@ import Image from 'next/image'
 import Button from '../../components/Button/Button'
 import H5 from '../../components/Typography/H5'
 
-import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 
 const PictureOfAboutInHomePage = () => {
-  const mq = BREACKPOINT.map((bp) => `@media (min-width: ${bp}px)`)
+  const BREACKPOINT = [576, 768, 992, 1200]
+  const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   return (
     <section
