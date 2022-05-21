@@ -6,9 +6,10 @@ import H5 from '../../components/Typography/H5'
 import Space from '../../components/Space/Space'
 import H2 from '../../components/Typography/H2'
 
-import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
+// import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 
 const AboutInHomePage2 = () => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   return (

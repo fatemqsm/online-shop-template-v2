@@ -10,15 +10,17 @@ import H3 from '../components/Typography/H3'
 import Small from '../components/Typography/Small'
 import Space from '../components/Space/Space'
 
-import BREACKPOINT from './../components/styles/BREACKPOINT.json'
+// import BREACKPOINT from './../components/styles/BREACKPOINT.json'
 import { useDispatch, useSelector } from 'react-redux'
 import AddToCartButton from './AddToCartButton'
 import Image from 'next/image'
 
 const SingleProduct = (props) => {
+  const BREACKPOINT = [576, 768, 992, 1200]
+  const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
-  const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
   let router = useRouter()
   const [product, setProduct] = useState({})
   useEffect(() => {

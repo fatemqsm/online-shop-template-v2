@@ -1,6 +1,6 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
-import BREACKPOINT from '../styles/BREACKPOINT.json'
+// import BREACKPOINT from '../styles/BREACKPOINT.json'
 const H5 = ({
   children,
   color,
@@ -8,6 +8,7 @@ const H5 = ({
   lineHeight = '1.5rem',
   fontSize = '1.25em',
 }) => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   return (
