@@ -16,19 +16,19 @@ import { GET_ALL_PRODUCTS_ACTION } from './../../../actions'
 import Link from 'next/link'
 import Image from 'next/image'
 
-// const ProductsSlider = ({ allProducts, loading }) => {
-const ProductsSlider = () => {
+const ProductsSlider = ({ allProducts, loading }) => {
+  // const ProductsSlider = () => {
   const [numberOfSlidesToShow, setNumberOfSlidesToShow] = useState(4)
   const [displayWidth, setDisplayWidth] = useState(4)
   const dispatch = useDispatch()
 
-  const allProducts = useSelector((state) => state.allProducts.allProducts)
-  const loadAllProducts = () => {
-    dispatch(GET_ALL_PRODUCTS_ACTION())
-  }
-  useEffect(() => {
-    loadAllProducts()
-  }, [])
+  // const allProducts = useSelector((state) => state.allProducts.allProducts)
+  // const loadAllProducts = () => {
+  //   dispatch(GET_ALL_PRODUCTS_ACTION())
+  // }
+  // useEffect(() => {
+  //   loadAllProducts()
+  // }, [])
 
   function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window

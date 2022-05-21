@@ -12,8 +12,13 @@ import AboutInHomePage2 from './containers/AboutInHomePage2/AboutInHomePage2'
 import Membership from './containers/Membership/Membership'
 import Footer from './containers/Footer/Footer'
 import { GET_ALL_PRODUCTS_ACTION } from '../actions'
+import { useDispatch, useSelector } from 'react-redux'
+
+
 
 const Home = ({ allProducts, loading }) => {
+  // const dispatch = useDispatch()
+
   const theme = useTheme()
   const color = `${theme.colors.darkBlue}`
   return (
@@ -27,8 +32,8 @@ const Home = ({ allProducts, loading }) => {
         <Header />
         <AboutInHomePage />
         <PictureOfAboutInHomePage />
-        <ProductsSlider />
-        {/* <ProductsSlider allProducts={allProducts} loading={loading} /> */}
+        {/* <ProductsSlider /> */}
+        <ProductsSlider allProducts={allProducts} loading={loading} />
         <AboutInHomePage2 />
         <Membership />
         <Footer />
@@ -38,14 +43,15 @@ const Home = ({ allProducts, loading }) => {
   )
 }
 
-// Home.getInitialProps = async ({ reduxStore }) => {
-//   await reduxStore.dispatch(GET_ALL_PRODUCTS_ACTION())
-//   const { allProducts } = reduxStore.getState()
-//   return {
-//     loading: allProducts.loading,
-//     allProducts: allProducts.allProducts,
-//   }
-//   // return {}
-// }
+Home.getInitialProps = async ({ reduxStore }) => {
+
+  await reduxStore.dispatch(GET_ALL_PRODUCTS_ACTION())
+  const { allProducts } = reduxStore.getState()
+  return {
+    loading: allProducts.loading,
+    allProducts: allProducts.allProducts,
+  }
+  // return {}
+}
 
 export default Home
