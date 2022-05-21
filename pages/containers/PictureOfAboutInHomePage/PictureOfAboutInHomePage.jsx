@@ -10,7 +10,7 @@ import H5 from '../../components/Typography/H5'
 
 const PictureOfAboutInHomePage = () => {
   const BREACKPOINT = [576, 768, 992, 1200]
-  const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+  const mq = BREACKPOINT.map((bp) => `@media (min-width: ${bp}px)`)
 
   return (
     <section
