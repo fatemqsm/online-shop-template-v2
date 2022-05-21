@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { GET_ALL_PRODUCTS_ACTION } from '../../../actions'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -8,12 +7,28 @@ import { css, cx } from '@emotion/css'
 import fetchUrl from '../../../utils/fetchUrl'
 import Products from './Products'
 import QuickViewIcon from './QuickViewIcon'
-import { Button, Space, H2 } from './../../components'
-import Link from 'next/link'
+// import { Button, Space, H2 } from './../../components'
+import Button from '../../components/Button/Button'
+import Space from '../../components/Space/Space'
+import H2 from '../../components/Typography/H2'
+import { GET_ALL_PRODUCTS_ACTION } from './../../../actions'
 
-const ProductsSlider = ({ allProducts, loading }) => {
+import Link from 'next/link'
+import Image from 'next/image'
+
+// const ProductsSlider = ({ allProducts, loading }) => {
+const ProductsSlider = () => {
   const [numberOfSlidesToShow, setNumberOfSlidesToShow] = useState(4)
   const [displayWidth, setDisplayWidth] = useState(4)
+  const dispatch = useDispatch()
+
+  const allProducts = useSelector((state) => state.allProducts.allProducts)
+  const loadAllProducts = () => {
+    dispatch(GET_ALL_PRODUCTS_ACTION())
+  }
+  useEffect(() => {
+    loadAllProducts()
+  }, [])
 
   function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window
@@ -43,6 +58,7 @@ const ProductsSlider = ({ allProducts, loading }) => {
       className={css`
         padding: 40px;
         text-align: center;
+        position: relative;
       `}
     >
       <Space />
@@ -58,13 +74,19 @@ const ProductsSlider = ({ allProducts, loading }) => {
           ))}
         </Slider>
       ) : (
-        <img
+        <div
           className={css`
-            width: 100px;
+            justify-content: center;
           `}
-          src="./loading.svg"
-          alt=""
-        />
+        >
+          <Image
+            loading="lazy"
+            src="/loading.svg"
+            alt="loading"
+            width={60}
+            height={60}
+          />
+        </div>
       )}
       <Space />
       <Space />

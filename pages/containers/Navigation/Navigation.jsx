@@ -5,7 +5,10 @@ import { jsx } from '@emotion/react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import CartContext from '../../../contexts/CartContext'
-import { Logo, Small } from '../../components'
+// import { Logo, Small } from '../../components'
+import Logo from '../../components/Logo/Logo'
+import Small from '../../components/Typography/Small'
+
 import { useTheme } from '@emotion/react'
 import Link from 'next/link'
 import {

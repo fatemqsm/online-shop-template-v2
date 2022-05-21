@@ -3,7 +3,7 @@ import { css } from '@emotion/css'
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from './containers/Header/Header'
-import { JumpUpButton } from './components'
+import JumpUpButton from './components/JumpUpButton/JumpUpButton'
 import { useTheme } from '@emotion/react'
 import AboutInHomePage from './containers/AboutInHomePage/AboutInHomePage'
 import PictureOfAboutInHomePage from './containers/PictureOfAboutInHomePage/PictureOfAboutInHomePage'
@@ -27,7 +27,8 @@ const Home = ({ allProducts, loading }) => {
         <Header />
         <AboutInHomePage />
         <PictureOfAboutInHomePage />
-        <ProductsSlider allProducts={allProducts} loading={loading} />
+        <ProductsSlider />
+        {/* <ProductsSlider allProducts={allProducts} loading={loading} /> */}
         <AboutInHomePage2 />
         <Membership />
         <Footer />
@@ -37,14 +38,14 @@ const Home = ({ allProducts, loading }) => {
   )
 }
 
-Home.getInitialProps = async ({ reduxStore }) => {
-  await reduxStore.dispatch(GET_ALL_PRODUCTS_ACTION())
-  const { allProducts } = reduxStore.getState()
-  return {
-    loading: allProducts.loading,
-    allProducts: allProducts.allProducts,
-  }
-  // return {}
-}
+// Home.getInitialProps = async ({ reduxStore }) => {
+//   await reduxStore.dispatch(GET_ALL_PRODUCTS_ACTION())
+//   const { allProducts } = reduxStore.getState()
+//   return {
+//     loading: allProducts.loading,
+//     allProducts: allProducts.allProducts,
+//   }
+//   // return {}
+// }
 
 export default Home

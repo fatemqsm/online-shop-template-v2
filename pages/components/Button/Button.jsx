@@ -1,6 +1,7 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
 import { jsx, ThemeProvider, useTheme } from '@emotion/react'
+import Image from 'next/image'
 
 const Button = ({
   loading = false,
@@ -18,7 +19,7 @@ const Button = ({
   padding = '10px 37px',
   backgroundColor = 'white',
   backgroundColorHover = '#0c1c6c',
-  src = './loading.svg',
+  src = '/loading.svg',
 }) => {
   const theme = useTheme()
   return (
@@ -47,24 +48,10 @@ const Button = ({
       `}
     >
       {loading === true ? (
-        <img
-          className={css`
-            width: 20px;
-          `}
-          // src="./loading.svg"
-          src={src}
-          alt=""
-        />
+        <Image src={src} alt="loading" width={20} height={20} />
       ) : (
         children
       )}
-      {/* <img
-        className={css`
-          width: 100px;
-        `}
-        src="./loading.svg"
-        alt=""
-      /> */}
     </button>
   )
 }

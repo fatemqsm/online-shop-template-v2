@@ -6,7 +6,11 @@ import { css } from '@emotion/css'
 import PictureOfAboutInHomePage from './containers/PictureOfAboutInHomePage/PictureOfAboutInHomePage'
 import Navigation from './containers/Navigation/Navigation'
 import Products from './containers/ProductsSlider/Products'
-import { Small, H2 } from './components'
+// import { Small, H2 } from './components'
+import Small from './components/Typography/Small'
+import H2 from './components/Typography/H2'
+import Image from 'next/image'
+
 const Shop = () => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
@@ -66,6 +70,7 @@ const Shop = () => {
           grid-gap:70px 10px; 
           margin:100px 0; 
           text-align:center; 
+          justify-content: ${productss ? `auto` : 'center'};
           ${mq[2]} {
             grid-template-columns:auto auto auto;
             margin-top:100px;
@@ -80,7 +85,16 @@ const Shop = () => {
           }
         `}>
 
-        {(productss) ? productss.map((item) => <Products data={item} key={`product-${item.Id}`} />) : 'loading'}
+        {(productss) ? productss.map((item) => <Products data={item} key={`product-${item.Id}`} />) : (
+
+          <Image
+            loading="lazy"
+            src="/loading.svg"
+            alt="loading"
+            width={60}
+            height={60}
+          />
+        )}
       </div>
     </>
   )

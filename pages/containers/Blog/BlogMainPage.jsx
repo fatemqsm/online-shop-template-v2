@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { css, cx } from '@emotion/css'
 import Navigation from '../Navigation/Navigation'
 import BlogModal from './BlogModal.jsx'
-import { Space, H2 } from './../../components'
+// import { Space, H2 } from './../../components'
+import Space from '../../components/Space/Space'
+import H2 from '../../components/Typography/H2'
+
 import Footer from './../Footer/Footer'
 import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
 import client from '../../../utils/ClientGraphQL'
+// import loading from '../../../public/loadign.svg'
 import {
   ApolloClient,
   InMemoryCache,
@@ -13,8 +18,16 @@ import {
   useQuery,
   gql,
 } from '@apollo/client'
-import POSTS_QUERY from './Posts.query'
-
+const POSTS_QUERY = gql`
+  {
+    posts {
+      id
+      title
+      date
+      text
+    }
+  }
+`
 const BlogMainPage = () => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
   const { loading, error, data } = useQuery(POSTS_QUERY)
@@ -54,13 +67,7 @@ const BlogMainPage = () => {
               text-align: center;
             `}
           >
-            <img
-              className={css`
-                width: 100px;
-              `}
-              src="./loading.svg"
-              alt="loading"
-            />
+            <Image width={50} height={50} src="/loading.gif" alt="loading" />
           </div>
         )}
         <Space />

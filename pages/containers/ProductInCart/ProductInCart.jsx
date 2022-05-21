@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
 import { css, cx } from '@emotion/css'
 import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
-import { Space, Small } from '../../components'
+// import { Space, Small } from '../../components'
+import Small from '../../components/Typography/Small'
+
+import Image from 'next/image'
+
 const ProductInCart = ({ data }) => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
   return (
@@ -41,15 +45,23 @@ const ProductInCart = ({ data }) => {
             }
           `}
         >
-          <img
-            src={data.Picture}
+          <div
             className={css`
               max-width: 150px;
+              max-heigh: 150px;
               ${mq[1]} {
                 order: 1;
               }
             `}
-          />
+          >
+            <Image
+              loading="lazy"
+              width={150}
+              height={150}
+              src={data.Picture}
+              alt="product"
+            />
+          </div>
         </li>
       </ul>
     </>

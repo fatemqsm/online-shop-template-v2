@@ -1,6 +1,11 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
-import { Button, H5, H2, Space } from '../../components'
+// import { Button, H5, H2, Space } from '../../components'
+import Button from '../../components/Button/Button'
+import H5 from '../../components/Typography/H5'
+import Space from '../../components/Space/Space'
+import H2 from '../../components/Typography/H2'
+
 import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 
 const AboutInHomePage2 = () => {

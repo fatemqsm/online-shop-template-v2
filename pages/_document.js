@@ -10,16 +10,8 @@ export default function Document() {
       <body>
         <Reset />
         <Animations />
-
         <Main />
         <NextScript />
-        {/* <img
-          className={css`
-                width: 100px;
-              `}
-          src="./loading.svg"
-          alt="loading"
-        /> */}
       </body>
     </Html>
   )

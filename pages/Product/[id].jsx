@@ -3,11 +3,18 @@ import { css, cx } from '@emotion/css'
 import { useRouter } from 'next/router'
 import PRODUCTS from '../containers/ProductsSlider/PRODUCTS.json'
 import Navigation from '../containers/Navigation/Navigation'
-import { Button, H2, H3, H5, Small, Space } from '../components'
+// import { Button, H2, H3, H5, Small, Space } from '../components'
+import H2 from '../components/Typography/H2'
+import H5 from '../components/Typography/H5'
+import H3 from '../components/Typography/H3'
+import Small from '../components/Typography/Small'
+import Space from '../components/Space/Space'
+
 import BREACKPOINT from './../components/styles/BREACKPOINT.json'
 import { useDispatch, useSelector } from 'react-redux'
 import AddToCartButton from './AddToCartButton'
-import Gallary from '../containers/ProductsSlider/Gallary'
+import Image from 'next/image'
+
 const SingleProduct = (props) => {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
@@ -19,7 +26,8 @@ const SingleProduct = (props) => {
     let productId = pathName.slice(9, 45)
     setProduct(PRODUCTS.find((item) => item.Id === productId))
   }, [])
-
+  console.log('product.Picture', product.Picture)
+  const picture = `/${product.Picture}`
   return (
     <div>
       <div
@@ -62,13 +70,12 @@ const SingleProduct = (props) => {
               width:400px; 
             `}
         >
-          <img
-            className={css`
-              height: :400px;
-              width:400px; 
-            `}
-            src={`../${product.Picture}`}
-            alt=""
+          <Image
+            loading="lazy"
+            src={picture}
+            alt="product picture"
+            width={400}
+            height={400}
           />
         </div>
         <div

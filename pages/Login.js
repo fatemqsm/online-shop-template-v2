@@ -3,7 +3,14 @@ import { css } from '@emotion/css'
 import { useDispatch, useSelector } from 'react-redux'
 import { LOGIN_ACTION, GET_ALL_USERS_INFORMATION_ACTION } from '../actions'
 import Navigation from './containers/Navigation/Navigation'
-import { H2, H5, Small, Space, InputText, Button } from './components'
+// import { H2, H5, Small, Space, InputText, Button } from './components'
+import H2 from './components/Typography/H2'
+import H5 from './components/Typography/H5'
+import Small from './components/Typography/Small'
+import Space from './components/Space/Space'
+import InputText from './components/Input/InputText'
+import Button from './components/Button/Button'
+
 import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -157,7 +164,7 @@ const Login = (props) => {
             color="white"
             colorHover="#0c1c6c"
             loading={auth.loading}
-            src='./loading-white.svg'
+            src='/loading-white.svg'
           >
             LOGIN
           </Button>

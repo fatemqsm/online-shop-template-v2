@@ -8,7 +8,8 @@ import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import CartContext from '../contexts/CartContext'
 import ProductInCart from './containers/ProductInCart/ProductInCart'
 import { useDispatch, useSelector } from 'react-redux'
-import { Space, Small, Button } from './components'
+import Small from './components/Typography/Small'
+import Button from './components/Button/Button'
 import Navigation from './containers/Navigation/Navigation'
 const Cart = () => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)

@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { css, cx, keyframes } from '@emotion/css'
-import { H5, Space, H1, Button } from '../../components'
+// import { H5, Space, H1, Button } from '../../components'
+import H5 from '../../components/Typography/H5'
+import Space from '../../components/Space/Space'
+import H1 from '../../components/Typography/H1'
+import Button from '../../components/Button/Button'
+
 import Link from 'next/link'
 import Navigation from '../Navigation/Navigation'
 import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
+import Image from 'next/image'
 const HeaderTextAnimation = keyframes`
 0%{
     transform: translateX(-100%);
@@ -29,7 +35,25 @@ const Header = () => {
       `}
     >
       <Navigation />
-      <img
+      <div
+        className={css`
+          width: 100%;
+          z-index: -1;
+          height: 100vh;
+          ${mq[1]} {
+            height: 400px;
+          }
+        `}
+      >
+        <Image
+          loading="lazy"
+          layout="fill"
+          src="/images/Header.jpg"
+          alt="header picture"
+        />
+      </div>
+
+      {/* <Image
         src="./images/Header.jpg"
         alt="poster"
         className={css`
@@ -41,7 +65,7 @@ const Header = () => {
             height: 400px;
           }
         `}
-      />
+      /> */}
       <div
         className={css`
           position: absolute;
@@ -59,7 +83,7 @@ const Header = () => {
         `}
       >
         <H5 fontFamily="font6" color="rgba(25, 25, 25, 0.75)">
-          It's made in Japan
+          It&apos;s made in Japan
         </H5>
         <Space />
         <H1 letterSpacing="0.5rem" fontFamily="font7" color="#0c1c6c">

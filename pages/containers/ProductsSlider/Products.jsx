@@ -1,7 +1,10 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
-import { Button, H5 } from './../../components'
+// import { Button, H5 } from './../../components'
+import Button from '../../components/Button/Button'
+import H5 from '../../components/Typography/H5'
 
+import Image from 'next/image'
 import styled from '@emotion/styled'
 import QuickViewIcon from './QuickViewIcon'
 import Link from 'next/link'
@@ -23,15 +26,22 @@ const Products = ({ data }) => {
   return (
     <div
       className={css`
+        width: 220px;
+        height: 220px;
         position: relative;
+        margin-bottom: 120px;
       `}
     >
-      <img
-        src={data.Picture}
+      <div
         className={css`
           width: 220px;
+          height: 220px;
+          position: relative;
         `}
-      />
+      >
+        <Image loading="lazy" layout="fill" src={data.Picture} alt="product" />
+      </div>
+
       <QuickViewIcon product={data} />
       <div
         className={css`

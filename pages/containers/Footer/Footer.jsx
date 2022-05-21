@@ -1,6 +1,7 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
-import { Space } from '../../components'
+// import { Space } from '../../components'
+import Space from '../../components/Space/Space'
 import { BsInstagram, BsTwitter, BsPinterest } from 'react-icons/bs'
 
 const Footer = () => {

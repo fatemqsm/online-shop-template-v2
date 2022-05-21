@@ -1,6 +1,10 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
-import { Space, H2, H5, H3, H4, Small } from '../../components'
+// import { Space, H2, H5, H3, H4, Small } from '../../components'
+import Space from '../../components/Space/Space'
+import H5 from '../../components/Typography/H5'
+import Small from '../../components/Typography/Small'
+
 import BREACKPOINT from '../../components/Styles/BREACKPOINT.json'
 
 const BlogModal = ({ data }) => {

@@ -1,7 +1,11 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
+import Image from 'next/image'
 
-import { Button, H5 } from './../../components'
+// import { Button, H5 } from './../../components'
+import Button from '../../components/Button/Button'
+import H5 from '../../components/Typography/H5'
+
 import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 
 const PictureOfAboutInHomePage = () => {
@@ -30,13 +34,25 @@ const PictureOfAboutInHomePage = () => {
         `}
       >
         <div style={{ position: 'relative' }}>
-          <img
+          <div
             className={css`
               max-width: 100%;
-              max-height: 100vh;
+              min-height: 300px;
+              ${mq[1]} {
+                min-height: 300px;
+              }
+              ${mq[1]} {
+                min-height: 250px;
+              }
             `}
-            src="./images/About2.jpg"
-          />
+          >
+            <Image
+              loading="lazy"
+              layout="fill"
+              src="/images/About2.jpg"
+              alt="picture of about in home page"
+            />
+          </div>
           <div
             className={css`
               position: absolute;
@@ -70,12 +86,26 @@ const PictureOfAboutInHomePage = () => {
           </div>
         </div>
         <div style={{ position: 'relative' }}>
-          <img
+          <div
             className={css`
-              width: 100%;
+              max-width: 100%;
+              min-height: 300px;
+              ${mq[1]} {
+                min-height: 300px;
+              }
+              ${mq[1]} {
+                min-height: 250px;
+              }
             `}
-            src="./images/About1.jpg"
-          />
+          >
+            <Image
+              loading="lazy"
+              layout="fill"
+              src="/images/About1.jpg"
+              alt="picture of about in home page"
+            />
+          </div>
+
           <div
             className={css`
               position: absolute;

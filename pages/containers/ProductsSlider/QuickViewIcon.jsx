@@ -2,10 +2,16 @@ import React, { useState } from 'react'
 import { css, cx } from '@emotion/css'
 import { BsEye } from 'react-icons/bs'
 import { Modal } from 'react-bootstrap'
-import { Button, H2, H3, H5, Small, Space } from '../../components'
+// import { Button, H2, H3, H5, Small, Space } from '../../components'
+import Button from '../../components/Button/Button'
+import H5 from '../../components/Typography/H5'
+import Small from '../../components/Typography/Small'
+
 import Link from 'next/link'
 import AddToCartButton from '../../Product/AddToCartButton'
 import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
+import Image from 'next/image'
+
 const QuickViewIcon = ({ product }) => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
@@ -64,20 +70,31 @@ const QuickViewIcon = ({ product }) => {
             }
           `}
         >
-          <img
+          <div
             className={css`
-              height: :400px;
-              width:400px;
-              ${mq[2]} {
-                width:250px;
-              } 
-              ${mq[1]} {
-                width:180px;
-              } 
+              // height: :400px;
+              // width:400px;
+              // display:inline-block;
+              // ${mq[2]} {
+              //   width:250px;
+              // height: :250px;
+              // }
+              // ${mq[1]} {
+              //   width:180px;
+              // height: :180px;
+              // }
+              width: 50%;
             `}
-            src={`../${product.Picture}`}
-            alt=""
-          />
+          >
+            <Image
+              loading="lazy"
+              src={product.Picture}
+              alt="loading"
+              width={500}
+              height={500}
+            />
+          </div>
+
           <div
             className={css`
               padding: 20px;
@@ -85,6 +102,10 @@ const QuickViewIcon = ({ product }) => {
               flex-direction: column;
               justify-content: space-between;
               gap: 10px;
+              width: 50%;
+              ${mq[1]} {
+                width: 100%;
+              }
             `}
           >
             <H5 lineHeight="1.5" fontFamily="font5" color="#0c1c6c">

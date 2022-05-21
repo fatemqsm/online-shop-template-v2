@@ -35,7 +35,6 @@ const Reset = () => {
           del,
           dfn,
           em,
-          img,
           ins,
           kbd,
           q,
@@ -143,7 +142,7 @@ const Reset = () => {
             border-collapse: collapse;
             border-spacing: 0;
           }
-          .slick-slide img {
+          .slick-slide Image {
             margin: auto;
           }
           .slick-prev:before,

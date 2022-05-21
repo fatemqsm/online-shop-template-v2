@@ -4,7 +4,8 @@ import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import { useRouter } from 'next/router'
 import { GET_ALL_PRODUCTS_ACTION } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { Space, Small, Button } from './components'
+// import { Space, Small, Button } from './components'
+import Button from './components/Button/Button'
 import { PAYMENT_ACTION } from '../actions'
 const PaymentPage = () => {
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
