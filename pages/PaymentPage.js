@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
 import { css, cx } from '@emotion/css'
-import BREACKPOINT from './components/Styles/BREACKPOINT.json'
+// import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import { useRouter } from 'next/router'
 import { GET_ALL_PRODUCTS_ACTION } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +8,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import Button from './components/Button/Button'
 import { PAYMENT_ACTION } from '../actions'
 const PaymentPage = () => {
+  const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+
   let router = useRouter()
   const allState = useSelector((state) => state)
   const dispatch = useDispatch()
