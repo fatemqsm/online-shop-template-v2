@@ -282,18 +282,6 @@ justify-content:center;
                   </div>
                 </Link>
               </li>
-              <li>
-                <Link href="/Blog">
-                  <div
-                    className={css`
-                      color: ${theme.colors.darkBlue};
-                      cursor: pointer;
-                    `}
-                  >
-                    Blog
-                  </div>
-                </Link>
-              </li>
             </ul>
           </div>
           <div

@@ -22,7 +22,7 @@ import Link from 'next/link'
 //   }
 // `
 
-const Products = ({ data }) => {
+const Products = ({ data = {} }) => {
   return (
     <div
       className={css`

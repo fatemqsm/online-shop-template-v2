@@ -6,7 +6,7 @@ import Small from '../../components/Typography/Small'
 
 import Image from 'next/image'
 
-const ProductInCart = ({ data }) => {
+const ProductInCart = ({ data = {} }) => {
   const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 

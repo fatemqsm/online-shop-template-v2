@@ -17,7 +17,7 @@ const DropDownMenuAnimation = keyframes`
 
   }
 `
-const DropDownMenu = ({ options }) => {
+const DropDownMenu = ({ options = '[]' }) => {
   const dispatch = useDispatch()
   const handleLogOut = () => {
     dispatch(LOGOUT_ACTION())
@@ -54,7 +54,7 @@ const DropDownMenu = ({ options }) => {
             overflow-wrap: break-word;
           `}
         >
-          <Link href={item.Link}>
+          <Link href={item?.Link}>
             <div
               onClick={() => {
                 item.Name === 'Log out' ? handleLogOut() : {}
@@ -65,7 +65,7 @@ const DropDownMenu = ({ options }) => {
                 line-height: 1.1rem;
               `}
             >
-              {item.Name}
+              {item?.Name}
             </div>
           </Link>
         </li>
