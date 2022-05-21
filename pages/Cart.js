@@ -23,24 +23,15 @@ const Cart = () => {
   const dispatch = useDispatch()
 
   const totalPrice = 0
-  const fetchingProductUrl = async () => {
-    // allStore.allProducts === [] ? setPRODUCTS(allStore.allProducts.allProducts) : dispatch(GET_ALL_PRODUCTS_ACTION()) && setPRODUCTS(allStore.allProducts.allProducts)
-
-    await dispatch(GET_ALL_PRODUCTS_ACTION())
-    setPRODUCTS(allStore.allProducts.allProducts)
-
-    // console.log('PRODUCTS', allStore.allProducts.allProducts)
-    // try {
-    //   const response = await fetch(
-    //     'https://62711f28e1c7aec428fc31ae.mockapi.io/allproducts'
-    //   )
-    //   const resault = await response.json()
-    //   setPRODUCTS(resault)
-    // } catch (e) {
-    //   console.log('error in fetchingProductUrl ', e)
-    // }
-  }
+  // const fetchingProductUrl = useCallback(async () => {
+  //   await dispatch(GET_ALL_PRODUCTS_ACTION())
+  //   setPRODUCTS(allStore.allProducts.allProducts)
+  // }, [])
   useEffect(() => {
+    const fetchingProductUrl = async () => {
+      await dispatch(GET_ALL_PRODUCTS_ACTION())
+      setPRODUCTS(allStore.allProducts.allProducts)
+    }
     fetchingProductUrl()
   }, [])
 
