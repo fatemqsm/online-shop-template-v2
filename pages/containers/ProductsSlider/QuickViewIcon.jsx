@@ -22,7 +22,7 @@ const QuickViewIcon = ({ product }) => {
 
   return (
     <>
-      <p title="Quick View">
+      <p>
         <div
           onClick={handleShow}
           className={css`

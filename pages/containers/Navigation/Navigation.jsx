@@ -355,7 +355,7 @@ justify-content:center;
                   }}
                 >
                   <div onClick={() => togglingCart()}>
-                    <p title="Cart">
+                    <p>
                       <HiOutlineShoppingBag />
                     </p>
 
@@ -388,7 +388,7 @@ justify-content:center;
                 `}
               >
                 <div onClick={() => togglingAccount()}>
-                  <p title="My Account">
+                  <p>
                     <HiOutlineUser />
                   </p>
                 </div>
