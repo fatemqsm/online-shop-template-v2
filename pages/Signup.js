@@ -43,7 +43,7 @@ const Signup = (props) => {
     // postData({ url: 'https://62711f28e1c7aec428fc31ae.mockapi.io/users', data: formValue })
   }
   useEffect(() => {
-    auth.register === true && router.push('/Login')
+    auth.register === true && router.push('/login')
   }, [auth.register])
   useEffect(() => {
     repetitiveUser === false && dispatch(REGISTER_ACTION(formValue))

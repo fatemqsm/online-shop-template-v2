@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
 import { css, cx } from '@emotion/css'
-// import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import { useRouter } from 'next/router'
 import { GET_ALL_PRODUCTS_ACTION } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
-// import { Space, Small, Button } from './components'
-import Button from './components/Button/Button'
+import Button from '../components/Button/Button'
 import { PAYMENT_ACTION } from '../actions'
 const PaymentPage = () => {
   const BREACKPOINT = [576, 768, 992, 1200]
@@ -82,7 +80,7 @@ const PaymentPage = () => {
     //   type: 'PAYMENT',
     // })
     await dispatch(PAYMENT_ACTION(ProceedToCheckout))
-    router.push('/Cart')
+    router.push('/cart')
   }
   return (
     <div className={css`

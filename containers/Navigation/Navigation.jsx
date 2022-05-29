@@ -11,6 +11,7 @@ import {
   HiOutlineShoppingBag,
 } from 'react-icons/hi'
 import DropDownMenu from './DropDownMenu'
+// import mq from '../../components/Styles/BREACKPOINT'
 
 const navBarAnimation = keyframes`
   from{
@@ -35,8 +36,6 @@ const Navigation = ({ marginBottom = '0' }) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [isOpenAccount, setIsOpenAccount] = useState(false)
   const [isOpenCart, setIsOpenCart] = useState(false)
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
   const auth = useSelector((state) => state.auth)
   const allStore = useSelector((state) => state)
   // console.log('allStore in navigation', allStore)

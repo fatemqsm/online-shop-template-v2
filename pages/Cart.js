@@ -47,7 +47,7 @@ const Cart = () => {
   // console.log('auth', allStore)
 
   const handelProceedToCheckout = () => {
-    (allStore.auth.logged === true && (allStore.auth.user)) ? (router.push('/PaymentPage')) : setLoginMessage(true)
+    (allStore.auth.logged === true && (allStore.auth.user)) ? (router.push('/paymentPage')) : setLoginMessage(true)
   }
   return (
     <>
