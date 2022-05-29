@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css, cx } from '@emotion/css'
 import { useRouter } from 'next/router'
 import Navigation from '../../containers/Navigation/Navigation'
