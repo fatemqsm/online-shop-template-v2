@@ -8,7 +8,7 @@ import H5 from '../../components/Typography/H5'
 import Small from '../../components/Typography/Small'
 
 import Link from 'next/link'
-import AddToCartButton from '../../Product/AddToCartButton'
+import AddToCartButton from '../AddToCartButton/AddToCartButton'
 // import BREACKPOINT from './../../components/Styles/BREACKPOINT.json'
 import Image from 'next/image'
 

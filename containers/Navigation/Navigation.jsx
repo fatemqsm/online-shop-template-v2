@@ -1,14 +1,8 @@
 import React, { useEffect, useState, useContext, useRef } from 'react'
-// import { jsx, css, keyframes } from '@emotion/react'
 import { css, keyframes } from '@emotion/css'
-import { jsx } from '@emotion/react'
-
 import { useDispatch, useSelector } from 'react-redux'
-import CartContext from '../../../contexts/CartContext'
-// import { Logo, Small } from '../../components'
 import Logo from '../../components/Logo/Logo'
 import Small from '../../components/Typography/Small'
-
 import { useTheme } from '@emotion/react'
 import Link from 'next/link'
 import {
@@ -16,8 +10,6 @@ import {
   HiOutlineSearch,
   HiOutlineShoppingBag,
 } from 'react-icons/hi'
-import { GET_ALL_USERS_INFORMATION_ACTION } from '../../../actions'
-// import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 import DropDownMenu from './DropDownMenu'
 
 const navBarAnimation = keyframes`
@@ -246,7 +238,7 @@ justify-content:center;
                 </Link>
               </li>
               <li>
-                <Link href="/Shop">
+                <Link href="/shop">
                   <div
                     className={css`
                       cursor: pointer;
@@ -258,7 +250,7 @@ justify-content:center;
                 </Link>
               </li>
               <li>
-                <Link href="/About">
+                <Link href="/about">
                   <div
                     className={css`
                       cursor: pointer;
@@ -271,7 +263,7 @@ justify-content:center;
                 </Link>
               </li>
               <li>
-                <Link href="/Contact">
+                <Link href="/contact">
                   <div
                     className={css`
                       color: ${theme.colors.darkBlue};
@@ -403,7 +395,7 @@ justify-content:center;
             <DropDownMenu options={optionForDropDownListAccount} />
           ) : (
             <DropDownMenu
-              options='[{"Link":"/Login","Name":"Log in"},{"Link":"/Signup","Name":"Sign up"}]'
+              options='[{"Link":"/login","Name":"Log in"},{"Link":"/signup","Name":"Sign up"}]'
               // ref={wrapperRef}
             />
           )}
@@ -422,7 +414,7 @@ justify-content:center;
             }
           `}
         >
-          <DropDownMenu options='[{"Link":"/Cart","Name":"View cart"}]' />
+          <DropDownMenu options='[{"Link":"/cart","Name":"View cart"}]' />
         </div>
       )}
 

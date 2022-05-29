@@ -3,15 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { REGISTER_ACTION, GET_ALL_USERS_INFORMATION_ACTION } from '../actions'
 import { css } from '@emotion/css'
-import Navigation from './containers/Navigation/Navigation'
-// import { H2, H5, Small, Space, InputText, Button } from './components'
-import H2 from './components/Typography/H2'
-import H5 from './components/Typography/H5'
-import Small from './components/Typography/Small'
-import Space from './components/Space/Space'
-import InputText from './components/Input/InputText'
-import Button from './components/Button/Button'
-// import BREACKPOINT from './components/Styles/BREACKPOINT.json'
+import Navigation from '../containers/Navigation/Navigation'
+import H2 from '../components/Typography/H2'
+import H5 from '../components/Typography/H5'
+import Small from '../components/Typography/Small'
+import Space from '../components/Space/Space'
+import InputText from '../components/Input/InputText'
+import Button from '../components/Button/Button'
 import Link from 'next/link'
 
 const Signup = (props) => {
@@ -173,7 +171,7 @@ const Signup = (props) => {
  
         `}>
 
-            <Link href={`/Login`}>
+            <Link href={`/login`}>
               <div className={css`
                       color: rgba(25, 25, 25, 0.75);
                       cursor:pointer; 

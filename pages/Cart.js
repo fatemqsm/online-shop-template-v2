@@ -1,16 +1,13 @@
 import React, { useEffect, useState, useContext, useCallback, useReducer } from 'react'
 import { useRouter } from 'next/router'
-import ProductItemReducer from './../pages/Product/ProductItem.reducer'
 import { GET_ALL_PRODUCTS_ACTION } from '../actions'
-
 import { css, cx } from '@emotion/css'
-// import BREACKPOINT from './components/Styles/BREACKPOINT.json'
-import CartContext from '../contexts/CartContext'
-import ProductInCart from './containers/ProductInCart/ProductInCart'
+import ProductInCart from '../containers/ProductInCart/ProductInCart'
 import { useDispatch, useSelector } from 'react-redux'
-import Small from './components/Typography/Small'
-import Button from './components/Button/Button'
-import Navigation from './containers/Navigation/Navigation'
+import Small from '../components/Typography/Small'
+import Button from '../components/Button/Button'
+import Navigation from '../containers/Navigation/Navigation'
+
 const Cart = () => {
   const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)

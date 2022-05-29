@@ -2,7 +2,7 @@ import React from 'react'
 import { css, keyframes } from '@emotion/css'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
-import { LOGOUT_ACTION } from '../../../actions'
+import { LOGOUT_ACTION } from './../../actions'
 
 const DropDownMenuAnimation = keyframes`
   from{

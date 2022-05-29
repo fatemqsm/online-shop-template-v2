@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { css, cx, keyframes } from '@emotion/css'
-// import { H5, Space, H1, Button } from '../../components'
 import H5 from '../../components/Typography/H5'
 import Space from '../../components/Space/Space'
 import H1 from '../../components/Typography/H1'
 import Button from '../../components/Button/Button'
-
-import Link from 'next/link'
 import Navigation from '../Navigation/Navigation'
-// import BREACKPOINT from './../../components/styles/BREACKPOINT.json'
 import Image from 'next/image'
+import mq from '../../components/Styles/BREACKPOINT'
 const HeaderTextAnimation = keyframes`
 0%{
     transform: translateX(-100%);
@@ -25,8 +22,8 @@ const HeaderTextAnimation = keyframes`
   }
 `
 const Header = () => {
-  const BREACKPOINT = [576, 768, 992, 1200]
-  const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
+  // const BREACKPOINT = [576, 768, 992, 1200]
+  // const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
 
   return (
     <header

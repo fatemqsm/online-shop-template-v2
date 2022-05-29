@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react'
-// import { Button, H2, H3, H5, Small, Space } from '../components'
-import Button from '../components/Button/Button'
+import Button from '../../components/Button/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { ADD_TO_CART_ACTION, REMOVE_FROM_CART_ACTION } from '../../actions/cart'
 

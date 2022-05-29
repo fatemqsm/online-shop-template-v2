@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/css'
 import { useDispatch, useSelector } from 'react-redux'
 import { LOGIN_ACTION, GET_ALL_USERS_INFORMATION_ACTION } from '../actions'
-import Navigation from './containers/Navigation/Navigation'
-// import { H2, H5, Small, Space, InputText, Button } from './components'
-import H2 from './components/Typography/H2'
-import H5 from './components/Typography/H5'
-import Small from './components/Typography/Small'
-import Space from './components/Space/Space'
-import InputText from './components/Input/InputText'
-import Button from './components/Button/Button'
-
-// import BREACKPOINT from './components/Styles/BREACKPOINT.json'
+import Navigation from '../containers/Navigation/Navigation'
+import H2 from '../components/Typography/H2'
+import H5 from '../components/Typography/H5'
+import Small from '../components/Typography/Small'
+import Space from '../components/Space/Space'
+import InputText from '../components/Input/InputText'
+import Button from '../components/Button/Button'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+
 const Login = (props) => {
 
   const BREACKPOINT = [576, 768, 992, 1200]
@@ -113,7 +111,7 @@ const Login = (props) => {
           </H5>
           <Small color='rgba(25, 25, 25, 0.75)'>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.
           </Small>
-          <Link href={`/Signup`}>
+          <Link href={`/signup`}>
             <Button
               margin='40px 0'
               backgroundColor="#0c1c6c"

@@ -1,9 +1,9 @@
 import React from 'react'
 import { css, cx } from '@emotion/css'
-import Navigation from './containers/Navigation/Navigation'
-import AboutInHomePage from './containers/AboutInHomePage/AboutInHomePage'
-import PictureOfAboutInHomePage from './containers/PictureOfAboutInHomePage/PictureOfAboutInHomePage'
-import Footer from './containers/Footer/Footer'
+import Navigation from '../containers/Navigation/Navigation'
+import AboutInHomePage from '../containers/AboutInHomePage/AboutInHomePage'
+import PictureOfAboutInHomePage from '../containers/PictureOfAboutInHomePage/PictureOfAboutInHomePage'
+import Footer from '../containers/Footer/Footer'
 
 const About = () => {
   return (

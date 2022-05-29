@@ -1,14 +1,11 @@
 import React, { useEffect, useState, useContext, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GET_ALL_PRODUCTS_ACTION } from '../actions'
-// import BREACKPOINT from './components/Styles/BREACKPOINT.json'
 import { css } from '@emotion/css'
-import PictureOfAboutInHomePage from './containers/PictureOfAboutInHomePage/PictureOfAboutInHomePage'
-import Navigation from './containers/Navigation/Navigation'
-import Products from './containers/ProductsSlider/Products'
-// import { Small, H2 } from './components'
-import Small from './components/Typography/Small'
-import H2 from './components/Typography/H2'
+import Navigation from '../containers/Navigation/Navigation'
+import Products from '../containers/ProductsSlider/Products'
+import Small from '../components/Typography/Small'
+import H2 from '../components/Typography/H2'
 import Image from 'next/image'
 
 const Shop = () => {
@@ -19,7 +16,6 @@ const Shop = () => {
   const dispatch = useDispatch()
 
   const allProducts = useSelector((state) => state.allProducts)
-  // console.log("allProducts in shop ", productss)
   const loadAllProducts = () => {
     dispatch(GET_ALL_PRODUCTS_ACTION())
   }
