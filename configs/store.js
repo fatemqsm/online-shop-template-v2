@@ -14,7 +14,7 @@ const createMyStore = () => {
   // let init = {}
   let logged = false
   let user = ''
-  // let carts = ''
+  let carts = ''
   // if (cookies.get('logged') === true) {
   //   logged = cookies.get('logged')
   // }
@@ -22,9 +22,9 @@ const createMyStore = () => {
     user = cookies.get('user')
     logged = true
   }
-  // if (cookies.get('carts') && cookies.get('carts').length > 0) {
-  //   carts = cookies.get('carts')
-  // }
+  if (cookies.get('carts') && cookies.get('carts').length > 0) {
+    carts = cookies.get('carts')
+  }
   // if (cookies.get('redux_store')) {
   //   init = cookies.get('redux_store')
   // }
@@ -36,9 +36,9 @@ const createMyStore = () => {
         user: user,
         logged,
       },
-      // cart: {
-      //   carts: carts,
-      // }
+      cart: {
+        carts: carts,
+      }
     },
     composeEnhancers(applyMiddleware(thunk))
   )

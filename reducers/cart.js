@@ -2,7 +2,7 @@ import actionTypes from "../configs/actionTypes"
 import Cookies from 'universal-cookie';
 
 const cart = (state = [], action) => {
-  // const cookies = new Cookies();
+  const cookies = new Cookies();
 
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
@@ -12,16 +12,16 @@ const cart = (state = [], action) => {
         ...oldCarts,
         action.productId
       ]
-      // if (action.productId) {
-      //   // cookies.set('carts', JSON.stringify(newCartsAddToCart), { path: '/' });
-      // }
+      if (action.productId) {
+        cookies.set('carts', JSON.stringify(newCartsAddToCart), { path: '/' });
+      }
       return {
         carts: newCartsAddToCart
       }
     case actionTypes.REMOVE_FROM_CART:
       let newCartsRemoveToCart = state.carts
       newCartsRemoveToCart = newCartsRemoveToCart.filter((cartId) => { return cartId != action.productId })
-      // if (action.productId) { cookies.set('carts', JSON.stringify(newCartsRemoveToCart), { path: '/' }); }
+      if (action.productId) { cookies.set('carts', JSON.stringify(newCartsRemoveToCart), { path: '/' }); }
 
       return {
         carts: newCartsRemoveToCart
@@ -49,7 +49,7 @@ const cart = (state = [], action) => {
       }
 
     case actionTypes.PAYMENT_SUCCESS:
-      // cookies.remove('carts')
+      cookies.remove('carts')
       return {
         loading: action.loading,
         carts: []

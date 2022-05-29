@@ -159,7 +159,7 @@ const Signup = (props) => {
             backgroundColorHover="#fbede7"
             color="white"
             colorHover="#0c1c6c"
-            src='./loading-white.svg'
+            src='/loading-white.svg'
             loading={auth.loading}
 
           >
