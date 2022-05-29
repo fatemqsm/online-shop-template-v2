@@ -8,7 +8,7 @@ import H3 from '../../components/Typography/H3'
 import Small from '../../components/Typography/Small'
 import Space from '../../components/Space/Space'
 import { useDispatch, useSelector } from 'react-redux'
-import AddToCartButton from './AddToCartButton'
+import AddToCartButton from '../../containers/AddToCartButton/AddToCartButton'
 import Image from 'next/image'
 
 const SingleProduct = (props) => {
