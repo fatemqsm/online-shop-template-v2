@@ -216,6 +216,7 @@ const SingleProduct = (props) => {
           className={css`
           display:flex; 
           justify-content: center;
+          margin:70px 0; 
           }
         `}
         >
