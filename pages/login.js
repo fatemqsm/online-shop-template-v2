@@ -19,7 +19,7 @@ const Login = (props) => {
 
   const dispatch = useDispatch()
   const [formValue, setFormValue] = useState({})
-  const [logged, setLogged] = useState(false)
+  const [logged, setLogged] = useState(null)
   const auth = useSelector((state) => state.auth)
   const allUsersInStates = useSelector((state) => state.allUsers)
   const router = useRouter()
