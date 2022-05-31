@@ -37,7 +37,7 @@ const createMyStore = () => {
         logged,
       },
       cart: {
-        carts: carts,
+        carts,
       }
     },
     composeEnhancers(applyMiddleware(thunk))

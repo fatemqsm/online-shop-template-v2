@@ -38,7 +38,7 @@ const Navigation = ({ marginBottom = '0' }) => {
   const [isOpenCart, setIsOpenCart] = useState(false)
   const auth = useSelector((state) => state.auth)
   const allStore = useSelector((state) => state)
-  // console.log('allStore in navigation', allStore)
+  console.log('allStore in navigation', allStore)
 
   const optionForDropDownListAccount = JSON.stringify([
     { Link: '/', Name: auth.user },

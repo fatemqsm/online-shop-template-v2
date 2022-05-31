@@ -85,7 +85,7 @@ const ProductsSlider = ({ allProducts, loading }) => {
       )}
       <Space />
       <Space />
-      <Link href="/Shop">
+      <Link href="/shop">
         <Button>View all products →</Button>
       </Link>
       <Space />

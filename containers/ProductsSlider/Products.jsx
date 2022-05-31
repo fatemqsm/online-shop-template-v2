@@ -60,7 +60,7 @@ const Products = ({ data = {} }) => {
       <H5 lineHeight="1.5" fontFamily="font5" color="#0c1c6c">
         {data.Price}
       </H5>
-      <Link href={`/Product/${data.Id}`}>
+      <Link href={`/product/${data.Id}`}>
         {/* <BottonWithDisplayNone> */}
         <Button fontSize="15px">Discover now →</Button>
         {/* </BottonWithDisplayNone> */}

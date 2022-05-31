@@ -123,7 +123,7 @@ const QuickViewIcon = ({ product = {} }) => {
             >
               {product.Description}
             </Small>
-            <Link href={`/Product/${product.Id}`}>
+            <Link href={`/product/${product.Id}`}>
               {/* <BottonWithDisplayNone> */}
               <Button padding="10px 10px" width="145px" fontSize="15px">
                 Discover now →

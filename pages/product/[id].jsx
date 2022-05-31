@@ -10,24 +10,33 @@ import Space from '../../components/Space/Space'
 import { useDispatch, useSelector } from 'react-redux'
 import AddToCartButton from '../../containers/AddToCartButton/AddToCartButton'
 import Image from 'next/image'
+import { GET_ALL_PRODUCTS_ACTION } from '../../actions'
 
 const SingleProduct = (props) => {
   const BREACKPOINT = [576, 768, 992, 1200]
   const mq = BREACKPOINT.map((bp) => `@media (max-width: ${bp}px)`)
-
   const dispatch = useDispatch()
-  const cart = useSelector((state) => state.cart)
-  let router = useRouter()
+  const loading = useSelector((state) => state.allProducts.loading)
+  const allProducts = useSelector((state) => state.allProducts.allProducts)
   const [product, setProduct] = useState({})
+  let router = useRouter()
+
+  useEffect(() => {
+    dispatch(GET_ALL_PRODUCTS_ACTION())
+  }, [])
+  // !!allProducts.allProducts && setProducts(allProducts.allProducts)
+
   useEffect(() => {
     let pathName = router.asPath
     let productId = pathName.slice(9, 45)
-    setProduct(PRODUCTS.find((item) => item.Id === productId))
-  }, [])
-  console.log('product.Picture', product.Picture)
-  const picture = `/${product.Picture}`
+    console.log('productssssss', productId)
+    setProduct(allProducts?.find((item) => item.Id === productId))
+  }, [allProducts])
+
+  // const picture = `/${product?.Picture}`
+  // console.log('picture', picture)
   return (
-    <div>
+    <>
       <div
         className={css`
           position: absolute;
@@ -47,160 +56,173 @@ const SingleProduct = (props) => {
         `}
       >
         <Small lineHeight="1.5" fontFamily="font2" color="#777">
-          Home / Shop / {product.Name}
+          Home / Shop / {product?.Name}
         </Small>
       </div>
-
-      <div
-        className={css`
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          justify-content: space-evenly;
-          ${mq[1]} {
-            flex-direction: column;
-          }
-        `}
-      >
-        <div
-          className={css`
+      {loading === false && product?.Picture ? (
+        <>
+          <div
+            className={css`
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              justify-content: space-evenly;
+              ${mq[1]} {
+                flex-direction: column;
+              }
+            `}
+          >
+            <div
+              className={css`
               height: :400px;
               width:400px; 
             `}
-        >
-          <Image
-            loading="lazy"
-            src={picture}
-            alt="product picture"
-            width={400}
-            height={400}
-          />
-        </div>
+            >
+              <Image
+                loading="lazy"
+                src={product.Picture}
+                alt="product picture"
+                width={400}
+                height={400}
+              />
+            </div>
+            <div
+              className={css`
+                flex-direction: column;
+                display: flex;
+                justify-content: flex-start;
+                padding: 10px 0;
+                ${mq[1]} {
+                  padding: 20px;
+                }
+              `}
+            >
+              <H2 letterSpacing="1px" fontFamily="font4" color="#0c1c6c">
+                {product?.Name}
+              </H2>
+              <H3 letterSpacing="1px" fontFamily="font4" color="#0c1c6c">
+                {product?.Price}
+              </H3>
+              <div
+                className={css`
+                  display: flex;
+                  margin-top: 70px;
+                  gap: 0 10px;
+                `}
+              >
+                <Small fontFamily="font6 " fontSize="1.1rem">
+                  Age:
+                </Small>
+                <Small>{product?.Age}</Small>
+              </div>
+
+              <div
+                className={css`
+                  display: flex;
+                  gap: 0 10px;
+                `}
+              >
+                <Small fontFamily="font6 " fontSize="1.1rem">
+                  Purpose:
+                </Small>
+                <Small>{product?.Purpose}</Small>
+              </div>
+
+              <div
+                className={css`
+                  display: flex;
+                  gap: 0 10px;
+                `}
+              >
+                <Small fontFamily="font6 " fontSize="1.1rem">
+                  Gender:
+                </Small>
+                <Small>{product?.Gender}</Small>
+              </div>
+
+              <div
+                className={css`
+                  display: flex;
+                  gap: 0 10px;
+                `}
+              >
+                <Small fontFamily="font6 " fontSize="1.1rem">
+                  Skin type:
+                </Small>
+                <Small>{product?.SkinType}</Small>
+              </div>
+
+              <div
+                className={css`
+                  display: flex;
+                  gap: 0 10px;
+                `}
+              >
+                <Small fontFamily="font6 " fontSize="1.1rem">
+                  Made in:
+                </Small>
+                <Small>{product?.MadeIn}</Small>
+              </div>
+
+              <div
+                className={css`
+                  display: flex;
+                  gap: 0 10px;
+                `}
+              >
+                <Small fontFamily="font6 " fontSize="1.1rem">
+                  Volume:
+                </Small>
+                <Small>{product?.Volume}</Small>
+              </div>
+              <div
+                className={css`
+                  margin-top: 70px;
+                `}
+              >
+                <AddToCartButton productId={product?.Id} />
+              </div>
+            </div>
+          </div>
+          <Space />
+          <Space />
+          <div
+            className={css`
+              padding: 50px;
+              width: 60%;
+              ${mq[1]} {
+                width: 100%;
+                padding: 20px;
+              }
+            `}
+          >
+            <H5 lineHeight="1.5" fontFamily="font5" color="black">
+              Description:
+            </H5>
+            <H5
+              fontSize="1.1em"
+              lineHeight="1.5"
+              fontFamily="font5"
+              color="rgba(25, 25, 25, 0.75)"
+            >
+              {product?.Description}
+            </H5>
+          </div>
+          <Space />
+          {/* <Gallary productPicture={`../${product.Picture}`} /> */}
+        </>
+      ) : (
         <div
           className={css`
-            flex-direction: column;
-            display: flex;
-            justify-content: flex-start;
-            padding: 10px 0;
-            ${mq[1]} {
-              padding: 20px;
-            }
-          `}
-        >
-          <H2 letterSpacing="1px" fontFamily="font4" color="#0c1c6c">
-            {product.Name}
-          </H2>
-          <H3 letterSpacing="1px" fontFamily="font4" color="#0c1c6c">
-            {product.Price}
-          </H3>
-          <div
-            className={css`
-              display: flex;
-              margin-top: 70px;
-              gap: 0 10px;
-            `}
-          >
-            <Small fontFamily="font6 " fontSize="1.1rem">
-              Age:
-            </Small>
-            <Small>{product.Age}</Small>
-          </div>
-
-          <div
-            className={css`
-              display: flex;
-              gap: 0 10px;
-            `}
-          >
-            <Small fontFamily="font6 " fontSize="1.1rem">
-              Purpose:
-            </Small>
-            <Small>{product.Purpose}</Small>
-          </div>
-
-          <div
-            className={css`
-              display: flex;
-              gap: 0 10px;
-            `}
-          >
-            <Small fontFamily="font6 " fontSize="1.1rem">
-              Gender:
-            </Small>
-            <Small>{product.Gender}</Small>
-          </div>
-
-          <div
-            className={css`
-              display: flex;
-              gap: 0 10px;
-            `}
-          >
-            <Small fontFamily="font6 " fontSize="1.1rem">
-              Skin type:
-            </Small>
-            <Small>{product.SkinType}</Small>
-          </div>
-
-          <div
-            className={css`
-              display: flex;
-              gap: 0 10px;
-            `}
-          >
-            <Small fontFamily="font6 " fontSize="1.1rem">
-              Made in:
-            </Small>
-            <Small>{product.MadeIn}</Small>
-          </div>
-
-          <div
-            className={css`
-              display: flex;
-              gap: 0 10px;
-            `}
-          >
-            <Small fontFamily="font6 " fontSize="1.1rem">
-              Volume:
-            </Small>
-            <Small>{product.Volume}</Small>
-          </div>
-          <div
-            className={css`
-              margin-top: 70px;
-            `}
-          >
-            <AddToCartButton productId={product.Id} />
-          </div>
-        </div>
-      </div>
-      <Space />
-      <Space />
-      <div
-        className={css`
-          padding: 50px;
-          width: 60%;
-          ${mq[1]} {
-            width: 100%;
-            padding: 20px;
+          display:flex; 
+          justify-content: center;
           }
         `}
-      >
-        <H5 lineHeight="1.5" fontFamily="font5" color="black">
-          Description:
-        </H5>
-        <H5
-          fontSize="1.1em"
-          lineHeight="1.5"
-          fontFamily="font5"
-          color="rgba(25, 25, 25, 0.75)"
         >
-          {product.Description}
-        </H5>
-      </div>
-      <Space />
-      {/* <Gallary productPicture={`../${product.Picture}`} /> */}
-    </div>
+          <Image src="/loading.svg" alt="loading" width={60} height={60} />
+        </div>
+      )}
+    </>
   )
 }
 
